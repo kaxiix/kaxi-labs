@@ -21,9 +21,9 @@ const projects = [
   },
   {
     id: 2,
-    title: "Workout routine generator ",
+    title: "FitPilot AI",
     description:
-      "Generate customized workout routines based on your fitness goals and your level of fitness Using AI",
+      "Elevate your fitness journey with FitPilot AI, your intelligent workout companion. Our AI analyzes your fitness level, goals, and available equipment to craft personalized workout routines that evolve with you. Features include smart exercise selection, real-time workout adjustments, progress tracking, form guidance, and nutrition recommendations. Whether you're a beginner or advanced athlete, FitPilot AI adapts to your needs, ensuring optimal results and sustainable fitness progress.",
     image: "/workout.webp",
     category: "Health",
   },
