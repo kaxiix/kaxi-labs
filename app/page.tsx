@@ -9,8 +9,29 @@ import { CategoryFilter } from "./components/category-filter";
 import { Newsletter } from "./components/newsletter";
 import { Pagination } from "./components/pagination";
 import { AboutMe } from "./components/about-me";
+import { SkillsAndExperience } from "./components/skills-and-experience";
+import {
+  HomeIcon,
+  InfoIcon,
+  StarIcon,
+  ImageIcon,
+  MenuIcon,
+  XIcon,
+  ArrowRightIcon,
+  LayoutGridIcon,
+  BookOpenIcon,
+  MessageSquareIcon,
+  LinkedinIcon,
+  GithubIcon,
+} from "lucide-react";
 
-const projects = [
+const projects: {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  category: "Education" | "Health" | "Social";
+}[] = [
   {
     id: 1,
     title: "EduMapper",
@@ -64,6 +85,7 @@ const projects = [
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
   const projectsPerPage = 6;
 
   const filteredProjects =
@@ -94,39 +116,49 @@ export default function Home() {
       <header className="sticky top-0 z-10 bg-gray-800 bg-opacity-90 backdrop-blur-sm shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-indigo-400">
-            Kaxi Labs
+            Kazi Ikram
           </Link>
-          <nav>
-            <ul className="flex space-x-6">
+          <button
+            className="md:hidden text-gray-100"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+          </button>
+          <nav className={`md:flex space-x-6 ${menuOpen ? "block" : "hidden"}`}>
+            <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
               <li>
                 <Link
                   href="#"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="hover:text-indigo-400 transition-colors flex items-center"
                 >
+                  <HomeIcon size={20} className="mr-2" />
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href="#about"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="hover:text-indigo-400 transition-colors flex items-center"
                 >
+                  <InfoIcon size={20} className="mr-2" />
                   About
                 </Link>
               </li>
               <li>
                 <Link
                   href="#featured"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="hover:text-indigo-400 transition-colors flex items-center"
                 >
+                  <StarIcon size={20} className="mr-2" />
                   Featured
                 </Link>
               </li>
               <li>
                 <Link
                   href="#gallery"
-                  className="hover:text-indigo-400 transition-colors"
+                  className="hover:text-indigo-400 transition-colors flex items-center"
                 >
+                  <ImageIcon size={20} className="mr-2" />
                   Gallery
                 </Link>
               </li>
@@ -137,12 +169,12 @@ export default function Home() {
 
       <main className="flex-grow">
         <AboutMe />
-
+        <SkillsAndExperience />
         <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
               <h1 className="text-5xl font-bold mb-6 leading-tight">
-                Discover the Future of SaaS
+                About my portfolio
               </h1>
               <p className="text-xl mb-8 max-w-lg text-gray-300">
                 Explore our curated collection of cutting-edge SaaS solutions
@@ -154,18 +186,7 @@ export default function Home() {
                 className="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-colors inline-flex items-center"
               >
                 View Gallery
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 ml-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Link>
             </div>
             <div className="md:w-1/2">
@@ -182,7 +203,8 @@ export default function Home() {
 
         <section id="featured" className="py-20 bg-gray-800">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+              <StarIcon className="mr-2 h-8 w-8 text-indigo-400" />
               Featured Project
             </h2>
             <FeaturedProject project={projects[0]} />
@@ -191,8 +213,9 @@ export default function Home() {
 
         <section id="gallery" className="py-20 bg-gray-900">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              SaaS Project Gallery
+            <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+              <LayoutGridIcon className="mr-2 h-8 w-8 text-indigo-400" />
+              Project Gallery
             </h2>
             <CategoryFilter
               activeCategory={activeCategory}
@@ -217,7 +240,8 @@ export default function Home() {
       <footer className="bg-gray-800 py-12">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-indigo-400">
+            <h3 className="text-xl font-semibold mb-4 text-indigo-400 flex items-center">
+              <InfoIcon className="mr-2 h-5 w-5" />
               About KaxiLabs
             </h3>
             <p className="text-gray-400">
@@ -225,70 +249,78 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-indigo-400">
+            <h3 className="text-xl font-semibold mb-4 text-indigo-400 flex items-center">
+              <BookOpenIcon className="mr-2 h-5 w-5" />
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <HomeIcon className="mr-2 h-4 w-4" />
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <StarIcon className="mr-2 h-4 w-4" />
                   Featured
                 </Link>
               </li>
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <ImageIcon className="mr-2 h-4 w-4" />
                   Gallery
                 </Link>
               </li>
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <InfoIcon className="mr-2 h-4 w-4" />
                   About
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-indigo-400">
+            <h3 className="text-xl font-semibold mb-4 text-indigo-400 flex items-center">
+              <MessageSquareIcon className="mr-2 h-5 w-5" />
               Connect
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
-                  Twitter
+                  <XIcon className="mr-2 h-4 w-4" />X (Twitter)
                 </Link>
               </li>
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <LinkedinIcon className="mr-2 h-4 w-4" />
                   LinkedIn
                 </Link>
               </li>
               <li>
                 <Link
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
+                  <GithubIcon className="mr-2 h-4 w-4" />
                   GitHub
                 </Link>
               </li>

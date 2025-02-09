@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
+import { BookIcon, DumbbellIcon, MessagesSquareIcon } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 interface Project {
@@ -9,8 +9,19 @@ interface Project {
   title: string;
   description: string;
   image: string;
-  category: string;
+  category: "Education" | "Health" | "Social";
 }
+
+const getCategoryIcon = (category: Project["category"]) => {
+  switch (category) {
+    case "Education":
+      return <BookIcon className="h-4 w-4 mr-1" />;
+    case "Health":
+      return <DumbbellIcon className="h-4 w-4 mr-1" />;
+    case "Social":
+      return <MessagesSquareIcon className="h-4 w-4 mr-1" />;
+  }
+};
 
 export function ProjectCard({ project }: { project: Project }) {
   const { ref, isVisible } = useIntersectionObserver({
@@ -35,7 +46,8 @@ export function ProjectCard({ project }: { project: Project }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <span className="inline-block px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full mb-2">
+          <span className="inline-flex items-center px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full mb-2">
+            {getCategoryIcon(project.category)}
             {project.category}
           </span>
           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
