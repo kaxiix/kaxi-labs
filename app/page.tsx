@@ -13,9 +13,9 @@ import { AboutMe } from "./components/about-me";
 const projects = [
   {
     id: 1,
-    title: "Roadmap Generator.",
+    title: "EduMapper",
     description:
-      "Generate a roadmap for your educational journey based on what you already know and what you want to learn Using AI",
+      "Chart your educational journey with EduMapper, an AI-powered learning pathway generator. Simply input your current skills and learning goals, and let our intelligent system create a personalized roadmap tailored to your needs. Features adaptive learning paths, skill gap analysis, milestone tracking, and smart resource recommendations to guide you through your educational journey effectively.",
     image: "/roadmap.webp",
     category: "Education",
   },
