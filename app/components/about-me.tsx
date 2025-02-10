@@ -1,12 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  UserIcon,
-  BriefcaseIcon,
-  RocketIcon,
-  GlobeIcon,
-  MailIcon,
-} from "lucide-react";
+import { UserIcon, BriefcaseIcon, RocketIcon, MailIcon } from "lucide-react";
 
 export function AboutMe() {
   return (
@@ -46,13 +40,6 @@ export function AboutMe() {
               </span>
             </p>
             <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="bg-indigo-600 text-white px-6 py-2 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-colors inline-flex items-center"
-              >
-                <GlobeIcon className="mr-2 h-5 w-5" />
-                My Portfolio
-              </Link>
               <Link
                 href="#"
                 className="bg-gray-700 text-white px-6 py-2 rounded-full text-lg font-semibold hover:bg-gray-600 transition-colors inline-flex items-center"
