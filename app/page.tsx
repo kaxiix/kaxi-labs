@@ -31,6 +31,7 @@ const projects: {
   description: string;
   image: string;
   category: "Education" | "Health" | "Social";
+  url: string;
 }[] = [
   {
     id: 1,
@@ -39,6 +40,7 @@ const projects: {
       "Chart your educational journey with EduMapper, an AI-powered learning pathway generator. Simply input your current skills and learning goals, and let our intelligent system create a personalized roadmap tailored to your needs. Features adaptive learning paths, skill gap analysis, milestone tracking, and smart resource recommendations to guide you through your educational journey effectively.",
     image: "/roadmap.webp",
     category: "Education",
+    url: "https://edumapper.com",
   },
   {
     id: 2,
@@ -47,6 +49,7 @@ const projects: {
       "Elevate your fitness journey with FitPilot AI, your intelligent workout companion. Our AI analyzes your fitness level, goals, and available equipment to craft personalized workout routines that evolve with you. Features include smart exercise selection, real-time workout adjustments, progress tracking, form guidance, and nutrition recommendations. Whether you're a beginner or advanced athlete, FitPilot AI adapts to your needs, ensuring optimal results and sustainable fitness progress.",
     image: "/workout.webp",
     category: "Health",
+    url: "https://fitpilot.ai",
   },
   {
     id: 3,
@@ -55,6 +58,7 @@ const projects: {
       "DialogueDeck AI is an intelligent conversation assistant that helps users navigate professional and social interactions with confidence. By analyzing specific scenarios and user goals, it generates personalized conversation strategies, including relevant questions, talking points, and social cues.",
     image: "/convo.webp",
     category: "Social",
+    url: "https://dialogdeck.vercel.app/",
   },
   {
     id: 4,
@@ -63,6 +67,7 @@ const projects: {
       "Transform your writing process with PaperPilot, an AI-powered peer review simulator that provides multi-perspective feedback. Get insights from simulated teacher, peer, and professional editor viewpoints, with customizable rubrics and seamless LMS integration. Perfect for educational institutions looking to enhance their writing programs with intelligent, scalable feedback solutions.",
     image: "/feedback.webp",
     category: "Education",
+    url: "https://paperpilot.edu",
   },
   {
     id: 5,
@@ -71,6 +76,7 @@ const projects: {
       "Experience language learning reimagined with LingoPal, your AI-powered conversation companion. Practice any language through immersive daily scenarios - from casual cafe chats to business meetings. Combine language learning with productivity by planning your day, setting reminders, and managing tasks, all while practicing your target language. Features customizable AI personalities, cultural insights, and progress tracking.",
     image: "/text.webp",
     category: "Education",
+    url: "https://lingopal.app",
   },
   {
     id: 6,
@@ -79,6 +85,7 @@ const projects: {
       "Transform your learning management system with EduSync AI, a powerful educational companion that seamlessly integrates with popular platforms like Canvas and Moodle. Leverage AI-powered analytics to track student progress across courses, provide instant assignment feedback, and deliver personalized learning recommendations. Features include smart resource suggestions, comprehensive progress tracking, automated grading assistance, and deep LMS integration for enhanced educational outcomes.",
     image: "/lms.webp",
     category: "Education",
+    url: "https://edusync.ai",
   },
 ];
 
@@ -207,7 +214,7 @@ export default function Home() {
               <StarIcon className="mr-2 h-8 w-8 text-indigo-400" />
               Featured Project
             </h2>
-            <FeaturedProject project={projects[0]} />
+            <FeaturedProject project={projects[2]} />
           </div>
         </section>
 
